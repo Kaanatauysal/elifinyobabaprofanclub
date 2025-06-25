@@ -11,20 +11,9 @@
       margin: 0;
       padding: 0;
       font-family: 'Pacifico', cursive;
-      background: linear-gradient(135deg, #ffccff, #ccf2ff);
+      background: linear-gradient(135deg, #ffd1dc, #ccf2ff);
       overflow: hidden;
       color: white;
-    }
-
-    .background-img {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('hellokitty.png') center/contain no-repeat;
-      opacity: 0.3;
-      z-index: 0;
     }
 
     .center-text {
@@ -75,23 +64,65 @@
     .heart-text {
       font-size: 0.9em;
     }
+
+    /* yıldız kayması */
+    .shooting-star {
+      position: fixed;
+      top: -10px;
+      width: 2px;
+      height: 80px;
+      background: white;
+      opacity: 0.8;
+      animation: shoot 3s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes shoot {
+      0% {
+        left: 100%;
+        top: -10px;
+        opacity: 0.8;
+        transform: rotate(45deg);
+      }
+      100% {
+        left: -10%;
+        top: 100%;
+        opacity: 0;
+        transform: rotate(45deg);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="background-img"></div>
-
+  <!-- YAZILAR -->
   <div class="center-text">elifinyobabaprofanclub</div>
-
   <div class="corner-text top-left">elif en iyisi</div>
   <div class="corner-text top-right">elif en iyisi</div>
   <div class="corner-text bottom-left">elif en iyisi</div>
   <div class="corner-text bottom-right">elif en iyisi</div>
-
   <div class="footer">
     <div class="transparent-text">umutu sikeyim</div>
     <div class="heart-text">made by emirhankulu ❤️</div>
   </div>
+
+  <!-- YILDIZ KAYMASI -->
+  <div class="shooting-star" style="animation-delay: 0s;"></div>
+  <div class="shooting-star" style="animation-delay: 1s;"></div>
+  <div class="shooting-star" style="animation-delay: 2s;"></div>
+
+  <!-- KONFETİ SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // Site açıldığında konfeti patlasın
+    window.onload = () => {
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    };
+  </script>
 
 </body>
 </html>
